@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.5, maximum-scale=3.0">
+  <meta name="theme-color" content="#667eea">
+  <title>Controle Bom Ar</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌬️ Controle do Bom Ar</h1>
+
+    <div class="toggle-group">
+      <label class="switch">
+        <input type="checkbox" id="powerToggle" onchange="togglePower()">
+        <span class="slider round"></span>
+      </label>
+      <span class="toggle-label" id="powerStatus">Sistema Desligado</span>
+    </div>
+
+    <div class="input-group">
+      <label for="intervalo-display">⏱️ Intervalo (minutos):</label>
+      <div id="intervalo-display" class="interval-display" onclick="openTimePicker()">10 min</div>
+    </div>
+
+    <div class="button-group">
+      <h3>💨 Intensidade:</h3>
+      <div class="intensity-buttons">
+        <button class="btn btn-fraco" onclick="enviarConfig('fraco')">
+          Fraco
+        </button>
+        <button class="btn btn-medio" onclick="enviarConfig('medio')">
+          Médio
+        </button>
+        <button class="btn btn-forte" onclick="enviarConfig('forte')">
+          Forte
+        </button>
+      </div>
+    </div>
+
+    <button class="btn btn-manual" onclick="acionarManual()">
+      🔥 Acionar Agora
+    </button>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <div id="timePickerModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeTimePicker()">&times;</span>
+      <h2>Selecione o Intervalo</h2>
+      <div class="time-picker">
+        <button class="arrow-button" onclick="changeMinutes(-1)">&#9660;</button>
+        <span id="selectedMinutes" class="selected-minutes">10</span>
+        <button class="arrow-button" onclick="changeMinutes(1)">&#9650;</button>
+      </div>
+      <button class="btn btn-confirm" onclick="applyTimeSelection()">Confirmar</button>
+    </div>
+  </div>
+
+
+  <script src="/script.js"></script>
+</body>
+</html>
